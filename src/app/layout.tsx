@@ -1,10 +1,22 @@
 import "./globals.css"
-import Navbar from "@/lib/components/navbar"
-import Footer from "@/lib/components/footer"
+import { Playfair_Display, Inter } from "next/font/google"
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 export const metadata = {
-  title: "Business Name",
-  description: "Short description of the business."
+  title: "Cardamom Indian Cuisine — Sunnyside, NY",
+  description:
+    "Authentic Indian cuisine in Sunnyside, Queens NY. Dine-in, takeaway, and delivery. Halal, vegan & vegetarian options available.",
 }
 
 export default function RootLayout({
@@ -13,13 +25,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1 max-w-6xl mx-auto px-6 py-12">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-dark-base text-cream font-sans">
+        {children}
       </body>
     </html>
   )
