@@ -29,7 +29,7 @@ export default function About() {
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-6 py-28 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-        {/* ── Image side ── */}
+        {/* ── Image collage side ── */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -44,25 +44,87 @@ export default function About() {
             C
           </div>
 
-          {/* Main image */}
-          <div className="relative z-10 rounded-3xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.6)]">
-            <div className="absolute inset-0 z-10 bg-gradient-to-tr from-crimson/25 via-transparent to-saffron/10 mix-blend-overlay" />
-            <Image
-              src="https://www.cardamomny.com/assets/img/pages/about-img.jpg"
-              alt="Cardamom Indian Cuisine"
-              width={720}
-              height={560}
-              className="w-full h-[460px] lg:h-[560px] object-cover"
-              unoptimized
-            />
+          {/* 2×2 collage grid */}
+          <div
+            className="relative z-10 grid grid-cols-2 gap-3 shadow-[0_40px_120px_rgba(0,0,0,0.6)]"
+            style={{ height: "520px" }}
+          >
+            {/* Top-left: team photo — CSS bg extracts top-left quadrant of composite */}
+            <div
+              className="relative rounded-tl-3xl overflow-hidden"
+              style={{
+                backgroundImage: "url('https://www.cardamomny.com/assets/img/pages/about-img.jpg')",
+                backgroundSize: "200%",
+                backgroundPosition: "0% 0%",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "#141008",
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-dark-card/70" />
+              {/* "Team" label */}
+              <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-saffron" />
+                <span className="text-cream/60 text-xs font-sans uppercase tracking-widest">Our Team</span>
+              </div>
+            </div>
+
+            {/* Top-right: butter chicken image */}
+            <div className="relative rounded-tr-3xl overflow-hidden">
+              <Image
+                src="https://www.cardamomny.com/assets/img/foods/butter-chicken.jpg"
+                alt="Butter Chicken"
+                fill
+                className="object-cover"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-card/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <p className="font-serif font-bold text-cream text-sm">Butter Chicken</p>
+                <p className="text-cream/40 text-xs font-sans">House Favourite</p>
+              </div>
+            </div>
+
+            {/* Bottom-left: chana masala image */}
+            <div className="relative rounded-bl-3xl overflow-hidden">
+              <Image
+                src="https://www.cardamomny.com/assets/img/foods/chana-masala.jpg"
+                alt="Chana Masala"
+                fill
+                className="object-cover"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-card/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <p className="font-serif font-bold text-cream text-sm">Chana Masala</p>
+                <p className="text-cream/40 text-xs font-sans">Vegan · Chef Pick</p>
+              </div>
+            </div>
+
+            {/* Bottom-right: owner photo — CSS bg extracts bottom-right quadrant */}
+            <div
+              className="relative rounded-br-3xl overflow-hidden"
+              style={{
+                backgroundImage: "url('https://www.cardamomny.com/assets/img/pages/about-img.jpg')",
+                backgroundSize: "200%",
+                backgroundPosition: "100% 100%",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "#141008",
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-dark-card/50" />
+              <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-saffron" />
+                <span className="text-cream/60 text-xs font-sans uppercase tracking-widest">Chef &amp; Owner</span>
+              </div>
+            </div>
           </div>
 
-          {/* Stats row below image */}
+          {/* Stats strip below collage */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.7 }}
-            className="mt-6 grid grid-cols-4 gap-3"
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="grid grid-cols-4 gap-3 mt-3"
           >
             {stats.map((s) => (
               <div key={s.label} className="bg-dark-card border border-white/5 rounded-2xl p-4 text-center">
