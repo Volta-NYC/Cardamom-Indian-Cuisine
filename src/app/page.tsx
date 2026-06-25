@@ -1,5 +1,6 @@
 import Navbar from "@/lib/components/navbar"
 import Hero from "@/lib/components/Hero"
+import Marquee from "@/lib/components/Marquee"
 import About from "@/lib/components/About"
 import Services from "@/lib/components/Services"
 import Hours from "@/lib/components/Hours"
@@ -14,8 +15,10 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <About />
         <Services />
+        <Marquee inverted />
         <Hours />
         <Menu />
         <Testimonials />
